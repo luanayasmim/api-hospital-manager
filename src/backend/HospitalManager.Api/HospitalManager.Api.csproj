@@ -17,8 +17,4 @@
     <ProjectReference Include="..\HospitalManager.Infrastructure\HospitalManager.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
