@@ -1,5 +1,6 @@
 using HospitalManager.Api.Filters;
 using HospitalManager.Api.Middlewares;
+using HospitalManager.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options=>options.Filters.Add(typeof(ExceptionFilter)));
+
+//Dependencies Injection
+builder.Services.AddApplication(builder.Configuration);
 
 var app = builder.Build();
 
