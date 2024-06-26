@@ -11,21 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{EB31
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{AEA5D8BD-FE27-44B8-B79D-E713AA6C64BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Api", "src\backend\HospitalManager.Api\HospitalManager.Api.csproj", "{7537B44C-9297-4C3E-89F7-1F2862F5F7DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Api", "src\backend\HospitalManager.Api\HospitalManager.Api.csproj", "{7537B44C-9297-4C3E-89F7-1F2862F5F7DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Application", "src\backend\HospitalManager.Application\HospitalManager.Application.csproj", "{2DDC8A5E-BF24-4640-818E-CF0B750D5417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Application", "src\backend\HospitalManager.Application\HospitalManager.Application.csproj", "{2DDC8A5E-BF24-4640-818E-CF0B750D5417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Domain", "src\backend\HospitalManager.Domain\HospitalManager.Domain.csproj", "{5F37CEBD-1FD9-40D5-85AA-569F3B9E981A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Domain", "src\backend\HospitalManager.Domain\HospitalManager.Domain.csproj", "{5F37CEBD-1FD9-40D5-85AA-569F3B9E981A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Infrastructure", "src\backend\HospitalManager.Infrastructure\HospitalManager.Infrastructure.csproj", "{0E032CFA-0F96-449F-9539-7F0423DF4049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Infrastructure", "src\backend\HospitalManager.Infrastructure\HospitalManager.Infrastructure.csproj", "{0E032CFA-0F96-449F-9539-7F0423DF4049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Communication", "src\shared\HospitalManager.Communication\HospitalManager.Communication.csproj", "{F4F954EA-43DA-4050-AB45-27AF02854150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Communication", "src\shared\HospitalManager.Communication\HospitalManager.Communication.csproj", "{F4F954EA-43DA-4050-AB45-27AF02854150}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager.Exceptions", "src\shared\HospitalManager.Exceptions\HospitalManager.Exceptions.csproj", "{4649FB8D-AD7B-4442-91E7-30D191E3ED5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalManager.Exceptions", "src\shared\HospitalManager.Exceptions\HospitalManager.Exceptions.csproj", "{4649FB8D-AD7B-4442-91E7-30D191E3ED5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{A9E5BE53-B10F-45BD-8793-54F9D6CE61A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{A9E5BE53-B10F-45BD-8793-54F9D6CE61A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{6547DFFD-A76D-42CA-9C78-4C093034EC6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{6547DFFD-A76D-42CA-9C78-4C093034EC6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{6547DFFD-A76D-42CA-9C78-4C093034EC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6547DFFD-A76D-42CA-9C78-4C093034EC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6547DFFD-A76D-42CA-9C78-4C093034EC6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{4649FB8D-AD7B-4442-91E7-30D191E3ED5D} = {AEA5D8BD-FE27-44B8-B79D-E713AA6C64BE}
 		{A9E5BE53-B10F-45BD-8793-54F9D6CE61A4} = {976F08A5-87CF-48A3-AF9E-2A44F7707A86}
 		{6547DFFD-A76D-42CA-9C78-4C093034EC6A} = {976F08A5-87CF-48A3-AF9E-2A44F7707A86}
+		{C1CF0FDC-E437-4D3C-83D9-1F28795A5F4D} = {976F08A5-87CF-48A3-AF9E-2A44F7707A86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E8551C1-08FC-40F3-A3EA-F8C3F40C1966}
