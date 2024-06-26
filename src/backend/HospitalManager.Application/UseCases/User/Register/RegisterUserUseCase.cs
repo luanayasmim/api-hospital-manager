@@ -43,7 +43,8 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         return new ResponseRegisteredUserJson
         {
-            Id = user.Id
+            Id = user.Id,
+            Name = user.Name,
         };
     }
 

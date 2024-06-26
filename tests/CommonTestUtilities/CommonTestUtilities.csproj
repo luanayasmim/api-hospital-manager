@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Bogus" Version="35.5.1" />
+    <PackageReference Include="Moq" Version="4.20.70" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\backend\HospitalManager.Application\HospitalManager.Application.csproj" />
     <ProjectReference Include="..\..\src\shared\HospitalManager.Communication\HospitalManager.Communication.csproj" />
   </ItemGroup>
 
