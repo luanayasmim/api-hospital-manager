@@ -49,7 +49,7 @@ public class RegisterUserUseCaseTest
             .Where(error => error.ErrorMessages.Count == 1 && error.ErrorMessages.Contains(ResourceMessagesExceptions.NAME_EMPTY));
     }
 
-    private RegisterUserUseCase CreateUseCase(string? email = null)
+    private static RegisterUserUseCase CreateUseCase(string? email = null)
     {
         var writeOnlyRepository = UserWriteOnlyRepositoryBuilder.Build();
         var unityOfWork = UnityOfWorkBuilder.Build();
