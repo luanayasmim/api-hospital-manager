@@ -1,5 +1,6 @@
 ﻿using CommonTestUtilities.Requests.Login;
 using FluentAssertions;
+using HospitalManager.Application.UseCases.Login.DoLogin;
 using HospitalManager.Communication.Requests.Login;
 using HospitalManager.Exceptions;
 using System.Globalization;
@@ -44,6 +45,7 @@ public class DoLoginTest : HospitalManagerClassFixture
 
         responseData.RootElement.GetProperty("id").GetGuid().Should().NotBeEmpty().And.Be(_id);
         responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrEmpty().And.Be(_name);
+        responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrWhiteSpace();
     }
 
     [Theory]
