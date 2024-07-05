@@ -2,9 +2,11 @@
 using HospitalManager.Domain.Enums;
 using HospitalManager.Domain.Repositories;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Infrastructure.DataAccess;
 using HospitalManager.Infrastructure.DataAccess.Repositories;
 using HospitalManager.Infrastructure.Extensions;
+using HospitalManager.Infrastructure.Security.Tokens.Access.Generator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ public static class DependencyInjectionExtension
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         AddRepositories(services);
+        AddTokens(services, configuration);
 
         if(configuration.IsUnitTestEnvironment())
             return;
@@ -60,5 +63,13 @@ public static class DependencyInjectionExtension
                 .WithGlobalConnectionString(connectionString)
                 .ScanIn(Assembly.Load("HospitalManager.Infrastructure")).For.All();
         });
+    }
+
+    private static void AddTokens(IServiceCollection services, IConfiguration configuration)
+    {
+        var expirationTimeMinutes = configuration.GetValue<uint>("Settings:Jwt:ExpirationTimeMinutes");
+        var signingKey = configuration.GetValue<string>("Settings:Jwt:SigningKey");
+
+        services.AddScoped<IAccessTokenGenerator>(options => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
     }
 }

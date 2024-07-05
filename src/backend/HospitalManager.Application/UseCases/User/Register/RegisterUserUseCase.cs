@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using HospitalManager.Application.Services.Cryptography;
 using HospitalManager.Communication.Requests.User;
+using HospitalManager.Communication.Responses;
 using HospitalManager.Communication.Responses.User;
 using HospitalManager.Domain.Repositories;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Exceptions;
 using HospitalManager.Exceptions.ExceptionsBase;
 
@@ -15,19 +17,22 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IUnityOfWork _unityOfWork;
     private readonly IMapper _mapper;
     private readonly PasswordEncripter _passwordEncripter;
+    private readonly IAccessTokenGenerator _accessTokenGenerator;
 
     public RegisterUserUseCase(
         IUserReadOnlyRepository readOnlyRepository,
         IUserWriteOnlyRepository writeOnlyRepository,
         IUnityOfWork unityOfWork,
         IMapper mapper,
-        PasswordEncripter passwordEncripter)
+        PasswordEncripter passwordEncripter,
+        IAccessTokenGenerator accessTokenGenerator)
     {
         _readOnlyRepository = readOnlyRepository;
         _writeOnlyRepository = writeOnlyRepository;
         _unityOfWork = unityOfWork;
         _mapper = mapper;
         _passwordEncripter = passwordEncripter;
+        _accessTokenGenerator = accessTokenGenerator;
     }
 
     public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
@@ -36,6 +41,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         var user = _mapper.Map<Domain.Entities.User>(request);
         user.Password = _passwordEncripter.Encrypt(request.Password);
+        user.UserIdentifier = Guid.NewGuid();
 
         await _writeOnlyRepository.Add(user);
 
@@ -45,6 +51,10 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         {
             Id = user.Id,
             Name = user.Name,
+            Tokens = new ResponseTokensJson
+            {
+                AccessToken = _accessTokenGenerator.Generate(user.UserIdentifier),
+            }
         };
     }
 
