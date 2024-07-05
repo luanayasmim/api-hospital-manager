@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\backend\HospitalManager.Application\HospitalManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\backend\HospitalManager.Infrastructure\HospitalManager.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\shared\HospitalManager.Communication\HospitalManager.Communication.csproj" />
   </ItemGroup>
 

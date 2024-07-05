@@ -28,6 +28,7 @@ public class RegisterUserTest : HospitalManagerClassFixture
         
         responseData.RootElement.GetProperty("id").GetGuid().Should().NotBeEmpty();
         responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrEmpty().And.Be(request.Name);
+        responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrWhiteSpace();
     }
 
     [Theory]
