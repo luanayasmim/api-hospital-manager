@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManager.Api.Controllers;
 
-[Route("/[controller]")]
-[ApiController]
-public class UserController : ControllerBase
+public class UserController : HospitalManagerBaseController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
