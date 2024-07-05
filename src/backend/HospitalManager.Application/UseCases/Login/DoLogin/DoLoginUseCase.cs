@@ -1,7 +1,9 @@
 ﻿using HospitalManager.Application.Services.Cryptography;
 using HospitalManager.Communication.Requests.Login;
+using HospitalManager.Communication.Responses;
 using HospitalManager.Communication.Responses.User;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Exceptions.ExceptionsBase;
 
 namespace HospitalManager.Application.UseCases.Login.DoLogin;
@@ -9,11 +11,16 @@ public class DoLoginUseCase : IDoLoginUseCase
 {
     private readonly IUserReadOnlyRepository _readOnlyRepository;
     private readonly PasswordEncripter _passwordEncripter;
+    private readonly IAccessTokenGenerator _accessTokenGenerator;
 
-    public DoLoginUseCase(IUserReadOnlyRepository readOnlyRepository, PasswordEncripter passwordEncripter)
+    public DoLoginUseCase(
+        IUserReadOnlyRepository readOnlyRepository,
+        PasswordEncripter passwordEncripter,
+        IAccessTokenGenerator accessTokenGenerator)
     {
         _readOnlyRepository = readOnlyRepository;
         _passwordEncripter = passwordEncripter;
+        _accessTokenGenerator = accessTokenGenerator;
     }
 
     public async Task<ResponseRegisteredUserJson> Execute(RequestLoginJson request)
@@ -26,6 +33,10 @@ public class DoLoginUseCase : IDoLoginUseCase
         {
             Id = user.Id,
             Name = user.Name,
+            Tokens = new ResponseTokensJson
+            {
+                AccessToken = _accessTokenGenerator.Generate(user.UserIdentifier),
+            }
         };
     }
 }
