@@ -3,23 +3,22 @@ using FluentAssertions;
 using HospitalManager.Exceptions;
 using System.Globalization;
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.Register;
-public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
+public class RegisterUserTest : HospitalManagerClassFixture
 {
-    private readonly HttpClient _httpClient;
+    private readonly string _method = "user";
 
-    public RegisterUserTest(CustomWebApplicationFactory factory) => _httpClient = factory.CreateClient();
+    public RegisterUserTest(CustomWebApplicationFactory factory) : base(factory) { }
 
     [Fact]
     public async Task Success()
     {
         var request = RequestRegisterUserJsonBuilder.Build();
 
-        var response = await _httpClient.PostAsJsonAsync("User", request);
+        var response = await DoPost(_method, request);
 
         response.StatusCode.Should().Be(HttpStatusCode.Created);
 
@@ -38,12 +37,7 @@ public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
         var request = RequestRegisterUserJsonBuilder.Build();
         request.Name = string.Empty;
 
-        if (_httpClient.DefaultRequestHeaders.Contains("Accept-Language"))
-            _httpClient.DefaultRequestHeaders.Remove("Accept-Language");
-
-        _httpClient.DefaultRequestHeaders.Add("Accept-Language", culture);
-
-        var response = await _httpClient.PostAsJsonAsync("User", request);
+        var response = await DoPost(_method, request, culture);
 
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
