@@ -2,6 +2,7 @@
 using HospitalManager.Application.Services.AutoMapper;
 using HospitalManager.Application.Services.Cryptography;
 using HospitalManager.Application.UseCases.Login.DoLogin;
+using HospitalManager.Application.UseCases.User.Profile;
 using HospitalManager.Application.UseCases.User.Register;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,5 +36,6 @@ public static class DependencyInjectionExtension
     {
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+        services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
     }
 }

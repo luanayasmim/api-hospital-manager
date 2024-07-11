@@ -33,13 +33,13 @@ public class AuthenticatedUserFilter : IAsyncAuthorizationFilter
                 throw new HospitalManagerException(ResourceMessagesExceptions.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE);
             }
         }
-        catch (SecurityTokenExpiredException ex)
-        {
-            context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(ex.Message));
-        }
-        catch (HospitalManagerException)
+        catch (SecurityTokenExpiredException)
         {
             context.Result = new UnauthorizedObjectResult(new ResponseErrorJson("TokenIsExpired") { TokenIsExpired = true });
+        }
+        catch (HospitalManagerException ex)
+        {
+            context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(ex.Message));
         }
         catch
         {
