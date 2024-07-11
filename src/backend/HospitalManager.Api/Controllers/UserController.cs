@@ -1,10 +1,12 @@
-﻿using HospitalManager.Application.UseCases.User.Register;
+﻿using HospitalManager.Api.Attributes;
+using HospitalManager.Application.UseCases.User.Register;
 using HospitalManager.Communication.Requests.User;
 using HospitalManager.Communication.Responses.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManager.Api.Controllers;
 
+[AuthenticatedUser]
 public class UserController : HospitalManagerBaseController
 {
     [HttpPost]
