@@ -1,4 +1,5 @@
 ﻿using HospitalManager.Api.Attributes;
+using HospitalManager.Application.UseCases.User.Profile;
 using HospitalManager.Application.UseCases.User.Register;
 using HospitalManager.Communication.Requests.User;
 using HospitalManager.Communication.Responses.User;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManager.Api.Controllers;
 
-[AuthenticatedUser]
 public class UserController : HospitalManagerBaseController
 {
     [HttpPost]
@@ -14,7 +14,15 @@ public class UserController : HospitalManagerBaseController
     public async Task<IActionResult> Register([FromServices] IRegisterUserUseCase useCase, [FromBody] RequestRegisterUserJson request)
     {
         var result = await useCase.Execute(request);
-
         return Created(string.Empty, result);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseUserProfileJson), StatusCodes.Status200OK)]
+    [AuthenticatedUser]
+    public async Task<IActionResult> GetUserProfile([FromServices] IGetUserProfileUseCase useCase)
+    {
+        var result = await useCase.Execute();
+        return Ok(result);
     }
 }
