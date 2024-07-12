@@ -3,7 +3,7 @@ using HospitalManager.Domain.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace HospitalManager.Infrastructure.DataAccess.Repositories;
-public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
+public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository, IUserUpdateOnlyRepository
 {
     private readonly HospitalManagerDbContext _dbContext;
 
@@ -21,4 +21,8 @@ public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
     {
         return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Email.Equals(email) && user.Password.Equals(password) && user.Active);
     }
+
+    public async Task<User> GetById(Guid id) => await _dbContext.Users.FirstAsync(user => user.Id.Equals(id));
+
+    public void Update(User user) => _dbContext.Users.Update(user);
 }
