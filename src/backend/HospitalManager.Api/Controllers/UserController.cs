@@ -1,7 +1,9 @@
 ﻿using HospitalManager.Api.Attributes;
 using HospitalManager.Application.UseCases.User.Profile;
 using HospitalManager.Application.UseCases.User.Register;
+using HospitalManager.Application.UseCases.User.Update;
 using HospitalManager.Communication.Requests.User;
+using HospitalManager.Communication.Responses;
 using HospitalManager.Communication.Responses.User;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,5 +26,16 @@ public class UserController : HospitalManagerBaseController
     {
         var result = await useCase.Execute();
         return Ok(result);
+    }
+
+    [HttpPut]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+    [AuthenticatedUser]
+    public async Task<IActionResult> Update([FromServices] IUpdateUserUseCase useCase, [FromBody] RequestUpdateUserJson request)
+    {
+        await useCase.Execute(request);
+
+        return NoContent();
     }
 }
