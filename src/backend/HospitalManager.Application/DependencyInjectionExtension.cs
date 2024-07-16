@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HospitalManager.Application.Services.AutoMapper;
 using HospitalManager.Application.UseCases.Login.DoLogin;
+using HospitalManager.Application.UseCases.User.ChangePassword;
 using HospitalManager.Application.UseCases.User.Profile;
 using HospitalManager.Application.UseCases.User.Register;
 using HospitalManager.Application.UseCases.User.Update;
@@ -31,5 +32,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
         services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
         services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+        services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
     }
 }
