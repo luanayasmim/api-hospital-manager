@@ -66,6 +66,22 @@ public class RegisterUserValidatorTest
             .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_INVALID));
     }
 
+    [Fact]
+    public void Error_PasswordEmpty()
+    {
+        var validator = new RegisterUserValidator();
+
+        var request = RequestRegisterUserJsonBuilder.Build();
+        request.Password = string.Empty;
+
+        var result = validator.Validate(request);
+
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should()
+            .ContainSingle()
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_EMPTY));
+    }
+
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
