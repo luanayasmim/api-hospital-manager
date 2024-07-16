@@ -1,8 +1,8 @@
-﻿using HospitalManager.Application.Services.Cryptography;
-using HospitalManager.Communication.Requests.Login;
+﻿using HospitalManager.Communication.Requests.Login;
 using HospitalManager.Communication.Responses;
 using HospitalManager.Communication.Responses.User;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Cryptography;
 using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Exceptions.ExceptionsBase;
 
@@ -10,12 +10,12 @@ namespace HospitalManager.Application.UseCases.Login.DoLogin;
 public class DoLoginUseCase : IDoLoginUseCase
 {
     private readonly IUserReadOnlyRepository _readOnlyRepository;
-    private readonly PasswordEncripter _passwordEncripter;
+    private readonly IPasswordEncripter _passwordEncripter;
     private readonly IAccessTokenGenerator _accessTokenGenerator;
 
     public DoLoginUseCase(
         IUserReadOnlyRepository readOnlyRepository,
-        PasswordEncripter passwordEncripter,
+        IPasswordEncripter passwordEncripter,
         IAccessTokenGenerator accessTokenGenerator)
     {
         _readOnlyRepository = readOnlyRepository;

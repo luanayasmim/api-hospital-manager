@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using HospitalManager.Application.Services.AutoMapper;
-using HospitalManager.Application.Services.Cryptography;
 using HospitalManager.Application.UseCases.Login.DoLogin;
 using HospitalManager.Application.UseCases.User.Profile;
 using HospitalManager.Application.UseCases.User.Register;
@@ -14,7 +13,6 @@ public static class DependencyInjectionExtension
     public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
     {
         AddAutoMapper(services);
-        AddPasswordEncripter(services, configuration);
         AddUseCases(services);
     }
 
@@ -25,12 +23,6 @@ public static class DependencyInjectionExtension
             options.AddProfile(new AutoMapping());
         })
         .CreateMapper());
-    }
-
-    private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
-    {
-        var additionalKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
-        services.AddScoped(option => new PasswordEncripter(additionalKey!));
     }
 
     private static void AddUseCases(IServiceCollection services)
