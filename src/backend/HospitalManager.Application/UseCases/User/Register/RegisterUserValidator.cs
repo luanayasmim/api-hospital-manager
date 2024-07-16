@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using HospitalManager.Application.SharedValidators;
 using HospitalManager.Communication.Requests.User;
 using HospitalManager.Exceptions;
 
@@ -15,9 +16,8 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
             .NotEmpty()
             .WithMessage(ResourceMessagesExceptions.EMAIL_EMPTY);
 
-        RuleFor(user => user.Password.Length)
-            .GreaterThan(6)
-            .WithMessage(ResourceMessagesExceptions.PASSWORD_INVALID);
+        RuleFor(user => user.Password)
+            .SetValidator(new PasswordValidator<RequestRegisterUserJson>());
 
         When(user => !string.IsNullOrEmpty(user.Email), () =>
         {
