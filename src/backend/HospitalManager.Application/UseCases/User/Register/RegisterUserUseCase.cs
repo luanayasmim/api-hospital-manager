@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using HospitalManager.Application.Services.Cryptography;
 using HospitalManager.Communication.Requests.User;
 using HospitalManager.Communication.Responses;
 using HospitalManager.Communication.Responses.User;
 using HospitalManager.Domain.Repositories;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Cryptography;
 using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Exceptions;
 using HospitalManager.Exceptions.ExceptionsBase;
@@ -16,7 +16,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IUserWriteOnlyRepository _writeOnlyRepository;
     private readonly IUnityOfWork _unityOfWork;
     private readonly IMapper _mapper;
-    private readonly PasswordEncripter _passwordEncripter;
+    private readonly IPasswordEncripter _passwordEncripter;
     private readonly IAccessTokenGenerator _accessTokenGenerator;
 
     public RegisterUserUseCase(
@@ -24,7 +24,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         IUserWriteOnlyRepository writeOnlyRepository,
         IUnityOfWork unityOfWork,
         IMapper mapper,
-        PasswordEncripter passwordEncripter,
+        IPasswordEncripter passwordEncripter,
         IAccessTokenGenerator accessTokenGenerator)
     {
         _readOnlyRepository = readOnlyRepository;

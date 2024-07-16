@@ -2,11 +2,13 @@
 using HospitalManager.Domain.Enums;
 using HospitalManager.Domain.Repositories;
 using HospitalManager.Domain.Repositories.User;
+using HospitalManager.Domain.Security.Cryptography;
 using HospitalManager.Domain.Security.Tokens;
 using HospitalManager.Domain.Services.LoggedUser;
 using HospitalManager.Infrastructure.DataAccess;
 using HospitalManager.Infrastructure.DataAccess.Repositories;
 using HospitalManager.Infrastructure.Extensions;
+using HospitalManager.Infrastructure.Security.Cryptography;
 using HospitalManager.Infrastructure.Security.Tokens.Access.Generator;
 using HospitalManager.Infrastructure.Security.Tokens.Access.Validator;
 using HospitalManager.Infrastructure.Services.LoggedUser;
@@ -20,6 +22,7 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        AddPasswordEncripter(services, configuration);
         AddRepositories(services);
         AddLoggedUser(services);
         AddTokens(services, configuration);
@@ -57,6 +60,12 @@ public static class DependencyInjectionExtension
     }
 
     private static void AddLoggedUser(IServiceCollection services) => services.AddScoped<ILoggedUser, LoggedUser>();
+
+    private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
+    {
+        var additionalKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
+        services.AddScoped<IPasswordEncripter>(option => new Sha512Encripter(additionalKey!));
+    }
 
     private static void AddTokens(IServiceCollection services, IConfiguration configuration)
     {
