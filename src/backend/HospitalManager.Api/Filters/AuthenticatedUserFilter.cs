@@ -30,7 +30,7 @@ public class AuthenticatedUserFilter : IAsyncAuthorizationFilter
 
             if (!exist)
             {
-                throw new HospitalManagerException(ResourceMessagesExceptions.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE);
+                throw new HospitalManagerException(ResourceMessagesException.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE);
             }
         }
         catch (SecurityTokenExpiredException)
@@ -43,7 +43,7 @@ public class AuthenticatedUserFilter : IAsyncAuthorizationFilter
         }
         catch
         {
-            context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(ResourceMessagesExceptions.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE));
+            context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(ResourceMessagesException.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE));
 
         }
     }
@@ -54,7 +54,7 @@ public class AuthenticatedUserFilter : IAsyncAuthorizationFilter
 
         if (string.IsNullOrEmpty(authentication))
         {
-            throw new HospitalManagerException(ResourceMessagesExceptions.NO_TOKEN);
+            throw new HospitalManagerException(ResourceMessagesException.NO_TOKEN);
         }
 
         return authentication["Bearer ".Length..].Trim();

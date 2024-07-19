@@ -52,7 +52,7 @@ public class UpdateUserUseCase : IUpdateUserUseCase
             var userExist = await _readOnlyRepository.ExistActiveUserWithEmail(request.Email);
 
             if (userExist)
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMessagesExceptions.EMAIL_ALREADY_REGISTERED));
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMessagesException.EMAIL_ALREADY_REGISTERED));
         }
 
         if (!result.IsValid)

@@ -22,14 +22,14 @@ namespace HospitalManager.Exceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourceMessagesExceptions {
+    public class ResourceMessagesException {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMessagesExceptions() {
+        internal ResourceMessagesException() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace HospitalManager.Exceptions {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HospitalManager.Exceptions.ResourceMessagesExceptions", typeof(ResourceMessagesExceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HospitalManager.Exceptions.ResourceMessagesException", typeof(ResourceMessagesException).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace HospitalManager.Exceptions {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The discount must be between 1 and 100.
+        /// </summary>
+        public static string DISCOUNT_WITH_INVALID_NUMBER {
+            get {
+                return ResourceManager.GetString("DISCOUNT_WITH_INVALID_NUMBER", resourceCulture);
             }
         }
         
@@ -93,6 +102,15 @@ namespace HospitalManager.Exceptions {
         public static string EMAIL_OR_PASSWORD_INVALID {
             get {
                 return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already a registry with this name..
+        /// </summary>
+        public static string NAME_ALREADY_REGISTERED {
+            get {
+                return ResourceManager.GetString("NAME_ALREADY_REGISTERED", resourceCulture);
             }
         }
         

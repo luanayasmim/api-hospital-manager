@@ -50,7 +50,7 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
         var currentPasswordEncripted = _passwordEncripter.Encrypt(request.Password);
 
         if (!currentPasswordEncripted.Equals(loggedUser.Password))
-            result.Errors.Add(new ValidationFailure(string.Empty, ResourceMessagesExceptions.PASSWORD_DIFFERENT_CURRENT_PASSWORD));
+            result.Errors.Add(new ValidationFailure(string.Empty, ResourceMessagesException.PASSWORD_DIFFERENT_CURRENT_PASSWORD));
 
         if (!result.IsValid)
             throw new ErrorOnValidationException(result.Errors.Select(error=>error.ErrorMessage).ToList());

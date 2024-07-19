@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DISCOUNT_WITH_INVALID_NUMBER" xml:space="preserve">
+    <value>o desconto deve ser entre 1 e 100.</value>
+  </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
     <value>O email já está cadastrado.</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
     <value>Email e/ou senha inválidos.</value>
+  </data>
+  <data name="NAME_ALREADY_REGISTERED" xml:space="preserve">
+    <value>Já existe um registro com esse nome.</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>O nome não pode estar vazio.</value>

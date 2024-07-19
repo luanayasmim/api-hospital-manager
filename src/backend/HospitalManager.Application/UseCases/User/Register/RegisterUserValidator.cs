@@ -10,11 +10,11 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
     {
         RuleFor(user => user.Name)
             .NotEmpty()
-            .WithMessage(ResourceMessagesExceptions.NAME_EMPTY);
+            .WithMessage(ResourceMessagesException.NAME_EMPTY);
 
         RuleFor(user => user.Email)
             .NotEmpty()
-            .WithMessage(ResourceMessagesExceptions.EMAIL_EMPTY);
+            .WithMessage(ResourceMessagesException.EMAIL_EMPTY);
 
         RuleFor(user => user.Password)
             .SetValidator(new PasswordValidator<RequestRegisterUserJson>());
@@ -23,7 +23,7 @@ public class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson>
         {
             RuleFor(user => user.Email)
             .EmailAddress()
-            .WithMessage(ResourceMessagesExceptions.EMAIL_INVALID);
+            .WithMessage(ResourceMessagesException.EMAIL_INVALID);
         });
     }
 }

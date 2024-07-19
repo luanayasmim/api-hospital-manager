@@ -46,7 +46,6 @@ builder.Services.AddSwaggerGen(config =>
     });
 });
 
-
 builder.Services.AddMvc(options=>options.Filters.Add(typeof(ExceptionFilter)));
 
 //Dependencies Injection
