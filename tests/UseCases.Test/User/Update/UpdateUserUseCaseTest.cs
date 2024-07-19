@@ -40,7 +40,7 @@ public class UpdateUserUseCaseTest
         Func<Task> act = async () => { await useCase.Execute(request); };
 
         (await act.Should().ThrowAsync<ErrorOnValidationException>())
-            .Where(error => error.ErrorMessages.Contains(ResourceMessagesExceptions.NAME_EMPTY));
+            .Where(error => error.ErrorMessages.Contains(ResourceMessagesException.NAME_EMPTY));
 
         user.Name.Should().NotBe(request.Name);
         user.Email.Should().NotBe(request.Email);
@@ -58,7 +58,7 @@ public class UpdateUserUseCaseTest
         Func<Task> act = async () => { await useCase.Execute(request); };
 
         (await act.Should().ThrowAsync<ErrorOnValidationException>())
-            .Where(error => error.ErrorMessages.Count == 1 && error.ErrorMessages.Contains(ResourceMessagesExceptions.EMAIL_ALREADY_REGISTERED));
+            .Where(error => error.ErrorMessages.Count == 1 && error.ErrorMessages.Contains(ResourceMessagesException.EMAIL_ALREADY_REGISTERED));
 
         user.Name.Should().NotBe(request.Name);
         user.Email.Should().NotBe(request.Email);

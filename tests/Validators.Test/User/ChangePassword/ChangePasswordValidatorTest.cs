@@ -30,7 +30,7 @@ public class ChangePasswordValidatorTest
 
         result.IsValid.Should().BeFalse();
 
-        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_EMPTY));
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.PASSWORD_EMPTY));
     }
 
     [Theory]
@@ -49,6 +49,6 @@ public class ChangePasswordValidatorTest
 
         result.IsValid.Should().BeFalse();
 
-        result.Errors.Should().ContainSingle().And.Contain(e=>e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_INVALID));
+        result.Errors.Should().ContainSingle().And.Contain(e=>e.ErrorMessage.Equals(ResourceMessagesException.PASSWORD_INVALID));
     }
 }

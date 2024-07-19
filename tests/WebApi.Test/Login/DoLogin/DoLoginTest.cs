@@ -64,7 +64,7 @@ public class DoLoginTest : HospitalManagerClassFixture
 
         var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
 
-        var expectedMessage = ResourceMessagesExceptions.ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", new CultureInfo(culture));
+        var expectedMessage = ResourceMessagesException.ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", new CultureInfo(culture));
 
         errors.Should().ContainSingle().And.Contain(error => error.GetString()!.Equals(expectedMessage));
     }

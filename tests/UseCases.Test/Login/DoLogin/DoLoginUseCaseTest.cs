@@ -40,7 +40,7 @@ public class DoLoginUseCaseTest
 
         Func<Task> act = async () => { await useCase.Execute(request); };
 
-        await act.Should().ThrowAsync<InvalidLoginException>().Where(error => error.Message.Equals(ResourceMessagesExceptions.EMAIL_OR_PASSWORD_INVALID));
+        await act.Should().ThrowAsync<InvalidLoginException>().Where(error => error.Message.Equals(ResourceMessagesException.EMAIL_OR_PASSWORD_INVALID));
     }
 
     private static DoLoginUseCase CreateUseCase(HospitalManager.Domain.Entities.User? user = null)

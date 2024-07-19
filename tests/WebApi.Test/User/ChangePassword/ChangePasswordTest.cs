@@ -73,7 +73,7 @@ public class ChangePasswordTest : HospitalManagerClassFixture
 
         var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
 
-        var expectedMessage = ResourceMessagesExceptions.ResourceManager.GetString("PASSWORD_EMPTY", new CultureInfo(culture));
+        var expectedMessage = ResourceMessagesException.ResourceManager.GetString("PASSWORD_EMPTY", new CultureInfo(culture));
 
         errors.Should().HaveCount(1).And.Contain(c=>c.GetString()!.Equals(expectedMessage));
     }

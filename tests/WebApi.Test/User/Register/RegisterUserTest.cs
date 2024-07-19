@@ -48,7 +48,7 @@ public class RegisterUserTest : HospitalManagerClassFixture
 
         var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
 
-        var expectedMessage = ResourceMessagesExceptions.ResourceManager.GetString("NAME_EMPTY", new CultureInfo(culture));
+        var expectedMessage = ResourceMessagesException.ResourceManager.GetString("NAME_EMPTY", new CultureInfo(culture));
 
         errors.Should().ContainSingle().And.Contain(error => error.GetString()!.Equals(expectedMessage));
     }

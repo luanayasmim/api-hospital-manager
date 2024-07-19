@@ -31,7 +31,7 @@ public class RegisterUserValidatorTest
         result.IsValid.Should().BeFalse();
         result.Errors.Should()
             .ContainSingle()
-            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.NAME_EMPTY));
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.NAME_EMPTY));
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class RegisterUserValidatorTest
         result.IsValid.Should().BeFalse();
         result.Errors.Should()
             .ContainSingle()
-            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_EMPTY));
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.EMAIL_EMPTY));
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public class RegisterUserValidatorTest
         result.IsValid.Should().BeFalse();
         result.Errors.Should()
             .ContainSingle()
-            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_INVALID));
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.EMAIL_INVALID));
     }
 
     [Fact]
@@ -79,7 +79,7 @@ public class RegisterUserValidatorTest
         result.IsValid.Should().BeFalse();
         result.Errors.Should()
             .ContainSingle()
-            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_EMPTY));
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.PASSWORD_EMPTY));
     }
 
     [Theory]
@@ -99,7 +99,7 @@ public class RegisterUserValidatorTest
         result.IsValid.Should().BeFalse();
         result.Errors.Should()
             .ContainSingle()
-            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_INVALID));
+            .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesException.PASSWORD_INVALID));
     }
 }
 

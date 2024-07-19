@@ -29,7 +29,7 @@ public class UpdateUserValidatorTest
         var result = validator.Validate(request);
 
         result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesExceptions.NAME_EMPTY));
+        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesException.NAME_EMPTY));
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class UpdateUserValidatorTest
         var result = validator.Validate(request);
 
         result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_EMPTY));
+        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesException.EMAIL_EMPTY));
     }
 
     [Fact]
@@ -57,6 +57,6 @@ public class UpdateUserValidatorTest
         var result = validator.Validate(request);
 
         result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesExceptions.EMAIL_INVALID));
+        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourceMessagesException.EMAIL_INVALID));
     }
 }
